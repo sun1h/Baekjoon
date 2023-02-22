@@ -10,18 +10,12 @@ for i in range(len(arr)):
         lst_h.append(arr[i][1])
 lst_h.sort()
 lst_v.sort()
-p1,p2,p3,p4=0,0,0,0
-len_h=0
-len_v=0
+di_h=[]
+di_v=[]
 for i in range(len(lst_h)-1):
-    if len_h < lst_h[i+1]-lst_h[i]:
-        len_h = lst_h[i+1]-lst_h[i]
-        p1=lst_h[i]
-        p2=lst_h[i+1]
+    di_h.append(lst_h[i+1]-lst_h[i])
 for i in range(len(lst_v)-1):
-    if len_v < lst_v[i+1]-lst_v[i]:
-        len_v = lst_v[i+1]-lst_v[i]
-        p3=lst_v[i]
-        p4=lst_v[i+1]
-
-print((p2-p1)*(p4-p3))
+    di_v.append(lst_v[i+1]-lst_v[i])
+di_h.sort()
+di_v.sort()
+print(di_h[-1]*di_v[-1])
