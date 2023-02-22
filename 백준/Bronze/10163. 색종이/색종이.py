@@ -1,5 +1,5 @@
 N=int(input())
-arr=[[0 for _ in range(1001)] for _ in range(1001)]
+arr=[[0 for _ in range(101)] for _ in range(101)]
 
 for i in range(1,N+1):
     x1,y1,w,h = map(int,input().split())
