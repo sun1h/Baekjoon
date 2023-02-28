@@ -7,7 +7,7 @@ def prime(k):
     return 1
 
 for i in range(int(input())):
-    ans=[]
+
     n=int(input())
 
     for j in range(n//2,0,-1):
