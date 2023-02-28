@@ -1,49 +1,29 @@
+def check(a,b):
+    if arr[a] != arr[b]:
+        return a+1,b-1   
+    if a == 0 or b == N-1:
+        return a,b
+    if arr[a] == arr[b]:
+       return check(a-1,b+1)
+
 N=int(input())
 arr=list(map(int,input().split()))
 n=int(input())
-for i in range(n):
-    a,b=map(int,input().split())
-    if a == 1:
-        k=b
-        while k <= N:
-            if arr[k-1] == 0:
-                arr[k-1] = 1    
+for _ in range(n):
+    sex, switch = map(int,input().split())
+    if sex == 1:
+        for i in range(switch-1,N,switch):
+            if arr[i] == 0:
+                arr[i] = 1
             else:
-                arr[k-1] = 0
-            k= k+b
-    else:
-        lst=[False for _ in range(N)]
-        for i in range(min(N+1-b,b)):
-            if arr[b-1-i] == arr[b-1+i]:
-                lst[b-1-i] = True
-                lst[b-1+i] = True
+                arr[i] = 0
+    if sex == 2:
+        a,b=check(switch-1,switch-1)
+        for i in range(a,b+1):
+            if arr[i] == 0:
+                arr[i] = 1
             else:
-                break
-        for i in range(len(lst)):
-            if lst[i] == True:
-                if arr[i] == 0:
-                    arr[i] = 1
-                else:
-                    arr[i]=0
- 
-if N <=20:
-    print(*arr[:20])
-elif N <=40:
-    print(*arr[:20])
-    print(*arr[20:40])
-elif N<=60:
-    print(*arr[:20])
-    print(*arr[20:40])
-    print(*arr[40:60])
-elif N<=80:
-    print(*arr[:20])
-    print(*arr[20:40])
-    print(*arr[40:60])
-    print(*arr[60:80])
-else:
-    print(*arr[:20])
-    print(*arr[20:40])
-    print(*arr[40:60])
-    print(*arr[60:80])
-    print(*arr[80:100])
+                arr[i] = 0
 
+for i in range(0,N,20):
+    print(*arr[i:i+20])
