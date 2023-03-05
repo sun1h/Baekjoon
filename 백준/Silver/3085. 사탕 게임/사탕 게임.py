@@ -1,71 +1,45 @@
-def check(arr):
-    n = len(arr)
-    answer = 1
-
-    for i in range(n):
-        # 열(col) 순회하면서 연속되는 숫자 세기
-        cnt = 1
-        for j in range(1, n):
-            if arr[i][j] == arr[i][j - 1]:
-                # 이전 것과 같다면 cnt에 1 더하기
-                cnt += 1
+def find(arr):
+    mx=1
+    for i in range(N):
+        tmp=1
+        for j in range(1,N):
+            if arr[i][j] == arr[i][j-1]:
+                tmp+=1
             else:
-                # 이전과 다르다면 다시 1로 초기화
-                cnt = 1
-
-            # for문을 돌면서 비교해 현재 cnt가 더 크다면 answer 갱신하기
-            if cnt > answer:
-                answer = cnt
-
-        # 행(row) 순회하면서 연속되는 숫자 세기
-        cnt = 1
-        for j in range(1, n):
-            if arr[j][i] == arr[j - 1][i]:
-                # 이전 것과 같다면 cnt에 1 더하기
-                cnt += 1
+                tmp=1
+            if tmp > mx:
+                mx = tmp
+        tmp=1
+        for j in range(1,N):
+            if arr[j][i] == arr[j-1][i]:
+                tmp+=1
             else:
-                # 이전과 다르다면 다시 1로 초기화
-                cnt = 1
+                tmp=1
+            if tmp > mx:
+                mx = tmp
+    return mx
 
-            # 비교해서 현재 cnt가 더 크다면 answer 갱신하기
-            if cnt > answer:
-                answer = cnt
-
-    return answer
-
-
-n = int(input())
-arr = [list(input()) for _ in range(n)]
-answer = 0
-
-for i in range(n):
-    for j in range(n):
-        # n보다 작으면 열을 바꿀 수 있다
-        if j + 1 < n:
-            # 인점한 것과 바꾸기
-            arr[i][j], arr[i][j + 1] = arr[i][j + 1], arr[i][j]
-
-            # check는 arr에서 인점한 것과 바꿨을 때 가장 긴 연속한 부분을 찾아내는 함수이다
-            temp = check(arr)
-
-            if temp > answer:
-                answer = temp
-
-            # 바꿨던 것을 다시 원래대로 돌려놓기
-            arr[i][j], arr[i][j + 1] = arr[i][j + 1], arr[i][j]
-
-        #  n보다 작으면 행을 바꿀 수 있다
-        if i + 1 < n:
-            # 인점한 것과 바꾸기
+N=int(input())
+arr=[[] for _ in range(N)]
+for i in range(N):
+    a = input()
+    for j in range(N):
+        arr[i].append(a[j])
+mx=0
+for i in range(N):
+    for j in range(N):
+        if j+1<N:
+            # 가로줄 전부 바꾸기
+            arr[i][j],arr[i][j+1]=arr[i][j+1],arr[i][j]
+            tmp=find(arr)
+            if tmp > mx:
+                mx= tmp
+            arr[i][j],arr[i][j+1]=arr[i][j+1],arr[i][j]
+        if i + 1 < N:
+            # 세로줄 전부 바꾸기
+            arr[i][j],arr[i+1][j]=arr[i+1][j],arr[i][j]
+            tmp2=find(arr)
+            if tmp2 >mx:
+                mx=tmp2
             arr[i][j], arr[i + 1][j] = arr[i + 1][j], arr[i][j]
-
-            # check는 arrd에서 인점한 것과 바꿨을 때 가장 긴 연속한 부분을 찾아내는 함수이다
-            temp = check(arr)
-
-            if temp > answer:
-                answer = temp
-
-            # 바꿨던 것을 다시 원래대로 돌려놓기
-            arr[i][j], arr[i + 1][j] = arr[i + 1][j], arr[i][j]
-
-print(answer)
+print(mx)
