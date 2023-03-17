@@ -1,21 +1,15 @@
-def func(K):
-    global total
-    tmp = []
-    for i in range(N)[::-1]:
-        if len(str(K)) >= len(str(arr[i])):
-            tmp.append(arr[i])
-    idx = 0
-    while K > 0:
-        if K == 0:
-            return
-        elif K >= tmp[idx]:
-            K -= tmp[idx]
-            total += 1
-        else:
-            idx += 1
-
 N, K = map(int, input().split())
-arr = [int(input()) for _ in range(N)] #동전의 가치 (오름차순)
-total = 0 # 필요한 동전 갯수
-func(K) #함수호출
+lst = []
+total = 0
+
+for i in range(N):
+    lst.append(int(input()))  # [50000,10000,5000,1000,500,100,50,10,5,1]
+
+for i in range(N)[::-1]:
+    if K - lst[i] >= 0:
+        total += K // lst[i]  # 몫 만큼 빼준다.
+        K = K % lst[i]  # 나머지가 K가 된다.
+    if K == 0: # 0이되면 멈춘다.
+        break
+
 print(total)
