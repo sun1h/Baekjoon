@@ -2,7 +2,7 @@ N, M = map(int, input().split())
 h = list(map(int, input().split()))
 start, end = 1, max(h)  # 1을 시작, 최댓값을 끝
 
-while start <= end:
+while start <= end: # 반복문 종료 조건
     mid = (start + end) // 2
     total = 0  # 잘린 나무 높이 총합
     for H in h:
