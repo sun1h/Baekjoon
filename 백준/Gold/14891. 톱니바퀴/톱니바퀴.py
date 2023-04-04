@@ -2,31 +2,29 @@ def func(idx, turn):
     global lst
     tmp = [0 for _ in range(4)]
     tmp[idx] = turn
-    pre_1 = [idx, turn]
-    pre_2 = [idx, turn]
+    pre=[[idx, turn],[idx, turn]]
     cnt = 0
     while cnt != 4:
         cnt += 1
         if cnt == 4:
             break
-        if pre_1[0] - 1 >= 0 and tmp[pre_1[0]] != 0 and lst[pre_1[0]][6] != lst[pre_1[0] - 1][2]:
-            if pre_1[1] == 1:
-                tmp[pre_1[0] - 1] = -1
-                pre_1[1] = -1
+        if pre[0][0] - 1 >= 0 and tmp[pre[0][0]] != 0 and lst[pre[0][0]][6] != lst[pre[0][0] - 1][2]:
+            if pre[0][1] == 1:
+                tmp[pre[0][0] - 1] = -1
+                pre[0][1] = -1
             else:
-                tmp[pre_1[0] - 1] = 1
-                pre_1[1] = 1
-        pre_1[0] -= 1
+                tmp[pre[0][0] - 1] = 1
+                pre[0][1] = 1
+        pre[0][0] -= 1
 
-        if pre_2[0] + 1 <= 3 and tmp[pre_2[0]] != 0 and lst[pre_2[0]][2] != lst[pre_2[0] + 1][6]:
-            if pre_2[1] == 1:
-                tmp[pre_2[0] + 1] = -1
-                pre_2[1] = -1
+        if pre[1][0] + 1 <= 3 and tmp[pre[1][0]] != 0 and lst[pre[1][0]][2] != lst[pre[1][0] + 1][6]:
+            if pre[1][1] == 1:
+                tmp[pre[1][0] + 1] = -1
+                pre[1][1] = -1
             else:
-                tmp[pre_2[0] + 1] = 1
-                pre_2[1] = 1
-        pre_2[0] += 1
-
+                tmp[pre[1][0] + 1] = 1
+                pre[1][1] = 1
+        pre[1][0] += 1
     rotate(tmp)
 
 
