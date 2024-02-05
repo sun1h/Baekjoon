@@ -1,0 +1,6 @@
+import java.util.*;
+class Solution {
+    public ArrayList<String> solution(String my_string) {
+        return new ArrayList<String>(Arrays.asList(my_string.split(" ")));
+    }
+}
