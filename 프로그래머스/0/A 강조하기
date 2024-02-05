@@ -1,0 +1,14 @@
+class Solution {
+    public String solution(String myString) {
+        String answer = "";
+        String myS = myString.toLowerCase();
+        for (char my:myS.toCharArray()){
+            if(my=='a'){
+                answer+='A';
+            }else{
+                answer+=my;
+            }
+        }
+        return answer;
+    }
+}
