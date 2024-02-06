@@ -1,0 +1,17 @@
+class Solution {
+    public int solution(String myString, String pat) {
+        int answer = 0;
+        String reverse = "";
+        for(char p:pat.toCharArray()){
+            if(p=='A'){
+                reverse+='B';
+            }else{
+                reverse+='A';
+            }
+        }
+        if(myString.contains(reverse)){
+            answer =1;
+        }
+        return answer;
+    }
+}
