@@ -1,15 +1,12 @@
 class Solution {
     public String solution(String n_str) {
-        String answer = "";
-        int id = 0;
-        for(int i=id; i<n_str.length();i++){
+        int idx = 0;
+        for(int i=0; i<n_str.length();i++){
             if(n_str.charAt(i)!='0'){
-                System.out.println(i);
-                id = i;
+                idx = i;
                 break;
             }
         }
-        answer = n_str.substring(id,n_str.length());
-        return answer;
+        return n_str.substring(idx,n_str.length());
     }
 }
