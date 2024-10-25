@@ -3,7 +3,7 @@ class Solution {
         long answer = -1;
 
         for (long i = 1; i * i <= n; i++) {
-            if (i * i == n) { 
+            if (n/i==i && n%i==0 ) { 
                 answer = (i + 1) * (i + 1); 
                 break; 
             }
