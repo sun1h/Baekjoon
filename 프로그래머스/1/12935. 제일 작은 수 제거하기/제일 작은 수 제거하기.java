@@ -1,24 +1,13 @@
 import java.util.*;
+
 class Solution {
-    public ArrayList solution(int[] arr) {
-        ArrayList answer = new ArrayList<>();
-        
-        int min = Integer.MAX_VALUE;;
-        for(int a:arr){
-            if(a<min){
-                min = a;
-            }
+    public int[] solution(int[] arr) {
+        if(arr.length<=1){
+            return new int[]{-1};
         }
-        
-        for(int a:arr){
-            if(a!=min){
-                answer.add(a);
-            }
-        }
-        
-        if(answer.size()==0){
-            answer.add(-1);
-        }
+    
+        int minValue = Arrays.stream(arr).min().orElseThrow();
+        int[] answer = Arrays.stream(arr).filter(i->i!=minValue).toArray();
         return answer;
     }
 }
