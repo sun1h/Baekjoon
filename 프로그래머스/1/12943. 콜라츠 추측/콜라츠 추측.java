@@ -1,18 +1,23 @@
 class Solution {
     public int solution(int num) {
-        long n = (long) num;
         int answer = 0;
+        long n = num;
+        
         while(n!=1){
-            if(answer==500){
-                answer = -1;
-                break;
-            }else if(n%2==0){
-                n/=2;
-            }else{
-                n=n*3+1;
+            ++answer;
+            if(answer>=500){
+                return -1;
             }
-            answer+=1;
+            n = cal(n);
         }
         return answer;
+    }
+    
+    public long cal(long n){
+        if(n%2==0){
+            return n/2;
+        }else{
+            return n*3+1;
+        }
     }
 }
