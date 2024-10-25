@@ -1,9 +1,9 @@
+import java.util.stream.*;
+
 class Solution {
     public int solution(int[] numbers) {
-        int answer = 1+2+3+4+5+6+7+8+9;
-        for(int n:numbers){
-            answer-=n;
-        }
+        int answer = (1+9)*9/2 - IntStream.of(numbers).sum();
+        
         return answer;
     }
 }
