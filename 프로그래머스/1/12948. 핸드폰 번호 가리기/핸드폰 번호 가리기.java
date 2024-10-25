@@ -1,7 +1,9 @@
 class Solution {
     public String solution(String phone_number) {
-        int num = phone_number.length()-4;
-        String answer = "*".repeat(num)+phone_number.substring(num,phone_number.length());
+        int le = phone_number.length();
+        String answer = "*".repeat(le-4);
+        answer += phone_number.substring(le-4,le);
+ 
         return answer;
     }
 }
