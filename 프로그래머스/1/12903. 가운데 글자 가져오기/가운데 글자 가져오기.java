@@ -1,10 +1,10 @@
 class Solution {
     public String solution(String s) {
-        int l = s.length();
-        if(l%2==0){
-            return s.substring(l/2-1,l/2+1);
+        int le = s.length();
+        if(le%2!=0){
+            return String.valueOf(s.charAt(le/2));
         }else{
-            return s.substring(l/2,l/2+1);
+            return s.substring(le/2-1,le/2+1);
         }
     }
 }
