@@ -1,19 +1,23 @@
 import java.util.*;
 
 class Solution {
-    public ArrayList solution(int[] arr, int divisor) {
-        ArrayList answer = new ArrayList<>();
-        for(int i=0; i<arr.length;i++){
-            if(arr[i]%divisor ==0){
-                answer.add(arr[i]);
+    public int[] solution(int[] arr, int divisor) {
+        ArrayList<Integer> answerList = new ArrayList<>();
+        for(int i=0; i<arr.length; i++){
+            if(arr[i]%divisor==0){
+                answerList.add(arr[i]);
             }
         }
         
-        if(answer.size()==0){
-            answer.add(-1);
-        }
+        if(answerList.size()==0){
+            return new int[]{-1};
+        }else{
+            int[] answer = answerList.stream()
+                                 .mapToInt(i->i)
+                                 .toArray();
         
-        Collections.sort(answer);
-        return answer;
+            Arrays.sort(answer);
+            return answer;
+        }     
     }
 }
