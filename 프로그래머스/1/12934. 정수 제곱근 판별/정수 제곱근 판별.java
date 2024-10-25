@@ -1,12 +1,14 @@
 class Solution {
     public long solution(long n) {
         long answer = -1;
-        double sqrt = Math.sqrt(n);
-        long check = (long) sqrt;
-        
-        if(check == sqrt){
-            answer = (check+1)*(check+1);
+
+        for (long i = 1; i * i <= n; i++) {
+            if (i * i == n) { 
+                answer = (i + 1) * (i + 1); 
+                break; 
+            }
         }
-        return answer;
+
+        return answer; 
     }
 }
