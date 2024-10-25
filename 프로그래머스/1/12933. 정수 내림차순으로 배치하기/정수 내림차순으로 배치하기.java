@@ -1,19 +1,18 @@
+import java.util.*;
+
 class Solution {
     public long solution(long n) {
-        int[] arr = new int[10];
-        
-        while (n > 0) {
-            arr[(int)(n % 10)]++;
-            n /= 10;
+        long answer = 0;
+        int num = String.valueOf(n).length();
+        int[] tmp = new int[num];
+        for(int i=0; i<num; i++){
+            tmp[i] = (int)(n%10);
+            n/=10;
         }
-        
-        StringBuilder sb = new StringBuilder();
-        for (int i = 9; i >= 0; i--) {
-            for (int j = 0; j < arr[i]; j++) {
-                sb.append(i);
-            }
+        Arrays.sort(tmp);
+        for(int i=0; i<tmp.length; i++){
+            answer+=tmp[i]*Math.pow(10,i);
         }
-        
-        return Long.parseLong(sb.toString());
+        return answer;
     }
 }
