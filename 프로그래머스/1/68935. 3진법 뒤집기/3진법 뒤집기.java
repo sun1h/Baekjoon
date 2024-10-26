@@ -11,11 +11,12 @@ class Solution {
             t.append(String.valueOf(n%3));
             n/=3;
         }
-        t.reverse();
+//         t.reverse();
         
-        for(int i=0; i<t.length();i++){
-            answer+= Character.getNumericValue(t.charAt(i))*Math.pow(3,i);
-        }
-        return answer;
+//         for(int i=0; i<t.length();i++){
+//             answer+= Character.getNumericValue(t.charAt(i))*Math.pow(3,i);
+//         }
+//         return answer;
+        return Integer.parseInt(t.toString(),3);
     }
 }
